@@ -1,0 +1,87 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "raycast-azure-devops",
+  "title": "raycast-azure-devops",
+  "description": "Manage common tasks in azure devops via raaycast",
+  "icon": "devops.png",
+  "author": "eimerreis",
+  "categories": [
+    "Developer Tools",
+    "Productivity"
+  ],
+  "preferences": [
+    {
+      "title": "PersonalAccessToken",
+      "name": "personalAccessToken",
+      "required": true,
+      "description": "Personal Access Token for AzureDevOps",
+      "type": "password"
+    },
+    {
+      "title": "DevOps Organization URL",
+      "name": "organizationUrl",
+      "required": true,
+      "description": "DevOps Organization URL (e.g. https://dev.azure.com/yourorgname)",
+      "type": "textfield"
+    },
+    {
+      "title": "Project Name",
+      "name": "projectName",
+      "required": true,
+      "description": "DevOps Project Name (if your org has multiple projects)",
+      "type": "textfield"
+    },
+    {
+      "title": "Team Name",
+      "name": "teamName",
+      "required": true,
+      "description": "Name of your DevOps Team",
+      "type": "textfield"
+    }
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "index",
+      "title": "Create Pull Request",
+      "description": "Create a pull request within Azure DevOps",
+      "subtitle": "Azure DevOps",
+      "mode": "view"
+    },
+    {
+      "name": "recent-items",
+      "title": "Recent Work Items",
+      "subtitle": "Azure DevOps",
+      "mode": "view",
+      "description": "List your recent work items in azure devops"
+    },
+    {
+      "name": "create-item",
+      "title": "Create Work Item",
+      "subtitle": "Azure DevOps",
+      "mode": "view",
+      "description": "Create a work item in Azure DevOps"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.37.1",
+    "azure-devops-node-api": "^11.2.0",
+    "fast-json-patch": "^3.1.1",
+    "showdown": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/showdown": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint"
+  }
+}
