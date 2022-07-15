@@ -35,7 +35,10 @@ export default function Command() {
       </Form.Dropdown>
 
       <Form.TextField id="title" title="Title" />
-      <Form.TextArea id="description" enableMarkdown={true} title="Description" info="You can use markdown here"  />
+      <Form.TextArea id="description" 
+        enableMarkdown={true} 
+        title="Description" 
+        info="You can use markdown here"  />
     </Form>
   );
 }

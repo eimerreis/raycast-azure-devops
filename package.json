@@ -37,6 +37,22 @@
       "required": true,
       "description": "Name of your DevOps Team",
       "type": "textfield"
+    },
+    {
+      "title": "Description Fieldname for Bugs (if custom)",
+      "placeholder": "e.g. Custom.Description",
+      "name": "fieldNames.bug.description",
+      "required": false,
+      "description": "Name of your DevOps Team",
+      "type": "textfield"
+    },
+    {
+      "title": "Description Fieldname for User Stories (if custom)",
+      "placeholder": "e.g. Custom.Description",
+      "name": "fieldNames.userStory.description",
+      "required": false,
+      "description": "Name of your DevOps Team",
+      "type": "textfield"
     }
   ],
   "license": "MIT",

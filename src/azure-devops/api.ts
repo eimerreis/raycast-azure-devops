@@ -4,7 +4,14 @@ import { compare, Operation } from "fast-json-patch";
 
 import { Preferences } from "../types/Preferences";
 
-const { organizationUrl, personalAccessToken: token, projectName, teamName } = getPreferenceValues<Preferences>();
+const {
+  organizationUrl,
+  personalAccessToken: token,
+  projectName,
+  teamName,
+  "fieldNames.bug.description": bugFieldName,
+  "fieldNames.userStory.description": userStoryFieldName,
+} = getPreferenceValues<Preferences>();
 const authHandler = azdev.getPersonalAccessTokenHandler(token);
 const connection = new azdev.WebApi(organizationUrl, authHandler);
 
@@ -81,6 +88,16 @@ export type CreateWorkItemPayload = {
 export const CreateWorkItem = async ({ title, iterationPath, workItemType, description }: CreateWorkItemPayload) => {
   const api = await GetWorkApi();
 
+  const defaultDescriptionField = "System.Description";
+  const descriptionField =
+    workItemType === "bug"
+      ? bugFieldName
+        ? bugFieldName
+        : defaultDescriptionField
+      : userStoryFieldName
+        ? userStoryFieldName
+        : defaultDescriptionField;
+
   const jsonPatch: Operation[] = [
     {
       op: "add",
@@ -90,7 +107,7 @@ export const CreateWorkItem = async ({ title, iterationPath, workItemType, descr
     },
     {
       op: "add",
-      path: "/fields/" + (workItemType === "bug" ? "Microsoft.VSTS.TCM.ReproSteps" : "Custom.Description"),
+      path: "/fields/" + descriptionField,
       value: description,
     },
     {
